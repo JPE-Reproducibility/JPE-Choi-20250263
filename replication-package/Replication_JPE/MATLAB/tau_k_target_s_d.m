@@ -1,0 +1,26 @@
+function [tau_k_next,s_k] = tau_k_target_s_d(tau_k,A_vec,Gamma_d,s_d,mu_y,mu_l,s_l,tau_l,sigma,eta,gamma_L,gamma_K,gamma_j)
+
+
+    X = -gamma_j / ( sigma/(sigma-1)-gamma_j );
+    A = [A_vec;1];
+    tau_k_next =( (s_d(1:end-1)...
+        *sum( ( A.^(-1/gamma_j).*mu_y.*(mu_l.*tau_l.*(s_l.^(1/(eta+1)))).^(gamma_L/gamma_j)...
+        .*tau_k.^(gamma_K/gamma_j).*Gamma_d.^((gamma_j-1)/gamma_j)).^X ) ).^(1/X)...
+    ./( A(1:end-1).^(-1/gamma_j).*mu_y(1:end-1).*(mu_l(1:end-1).*tau_l(1:end-1).*(s_l(1:end-1).^(1/(eta+1)))).^(gamma_L/gamma_j)...
+    .*Gamma_d(1:end-1).^((gamma_j-1)/gamma_j))).^(gamma_j/gamma_K);
+
+    tau_k_next(end+1)=1;
+
+    s_k = s_d./Gamma_d./(mu_y.*tau_k_next)./sum(s_d./Gamma_d./(mu_y.*tau_k_next));
+
+    % tau_k_next = s_d(1:end-1)./Gamma_d(1:end-1)./(mu_y(1:end-1).*s_k(1:end-1)...
+    %     *sum(s_d./Gamma_d./(mu_y .* tau_k)) )
+
+end
+
+% 1/(1+ex) = Gamma
+
+% s_y_check=( ( [A;1].^(-1/gamma_j).*mu_y.*(mu_l.*tau_l).^(gamma_L/gamma_j).*tau_k.^(gamma_K/gamma_j)...
+%         .*s_l.^(gamma_L/(gamma_j*(eta+1))).*(1+ex).^((1-gamma_j)/gamma_j) ).^X )./...
+%  sum( ( [A;1].^(-1/gamma_j).*mu_y.*(mu_l.*tau_l).^(gamma_L/gamma_j).*tau_k.^(gamma_K/gamma_j)...
+%         .*s_l.^(gamma_L/(gamma_j*(eta+1))).*(1+ex).^((1-gamma_j)/gamma_j) ).^X );
