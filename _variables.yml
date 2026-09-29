@@ -1,6 +1,11 @@
-title: "Stand-in title"
-author: "Dr Prof James 'JayJay' Author"
-paper_id: 12345678
+title: "Superstars or Supervillains? Large Firms in the South Korean Growth Miracle"
+author: "Choi"
 round: 1
-repo: "https://www.github.com/standin"
-dropbox_rel_path: "JPE/Author-12345678/1"
+repo: "https://github.com/JPE-Reproducibility/JPE-Choi-20250263"
+paper_id: 20250263
+journal: "JPE"
+paper_slug: "Choi-20250263"
+dropbox_rel_path: "JPE/Choi-20250263/1"
+package_size_gb: 3.24
+package_max_file_size_gb: 2
+package_max_pkg_size_gb: 10

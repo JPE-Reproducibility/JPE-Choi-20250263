@@ -209,6 +209,8 @@ For missing requirements, see the list of required changes in @sec-findings
 
 > {REPLICATOR} Here I provide you with a list of what I identified as *data files* based on file endings. Please check the list and amend if there are obvious mistakes. Watch out for Personally Identifiable Information (PII)!
 
+{{< include generated/report-secrets.md >}}
+
 {{< include generated/report-pii.md >}}
 
 {{< include generated/report-file-paths.md >}}
@@ -233,6 +235,10 @@ For missing requirements, see the list of required changes in @sec-findings
 > {REPLICATOR}: - Neither the program codes, nor the README, identify which tables are produced by what program.
 
 {{< include generated/report-cloc.md >}}
+
+{{< include generated/report-code-quality.md >}}
+
+{{< include generated/report-llm-reproducibility.md >}}
 
 
 - [ ] The replication package contains a "main" or "master" file(s) which calls all other auxiliary programs.

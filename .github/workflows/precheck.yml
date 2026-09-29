@@ -91,6 +91,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add .
+          [ -s generated/force-add-files.txt ] && xargs git add -f < generated/force-add-files.txt
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
